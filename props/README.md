@@ -6,9 +6,9 @@ React'te **props** (properties), bileşenler arasında veri iletmek için kullan
 
 Props, bir bileşenin içine **parametre** olarak gönderilir. Bu veriler **değiştirilemez** (immutable) ve yalnızca okuma amaçlıdır. Props, genellikle üst bileşenlerden alt bileşenlere veri iletmek için kullanılır.
 
-### Örnek Kullanım
+### Örnek Kullanım 
 
-```jsx
+- ```jsx
 import React from 'react';
 
 // User bileşeni
@@ -44,7 +44,7 @@ Bu uygulama, bir kullanıcının bilgilerini ve arkadaş listesini görüntülem
 
 `User` bileşeni, props olarak `data` ve `friends` alır. Bu bileşen, kullanıcı bilgilerini ve arkadaş listesini ekranda görüntüler.
 
-```jsx
+- ```jsx
 import React from 'react';
 
 function User({ data, friends }) {
@@ -69,7 +69,7 @@ export default User;
 
 ### `App` Bileşeni
 
-```jsx
+- ```jsx
 import React from 'react';
 import User from './components/User';
 
