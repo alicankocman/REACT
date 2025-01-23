@@ -81,3 +81,68 @@ function App() {
 }
 
 export default App;
+```
+# React'te PropTypes Kullanımı ile Örnek Komponent
+
+Bu örnek, React'te bir fonksiyonel komponentin `PropTypes` kullanarak nasıl yapılandırılacağını gösterir. Kullanıcı bilgilerini ve arkadaş listesini dinamik olarak görüntüleyen bir `User` komponenti oluşturulmuştur.
+
+### **User.js**
+```javascript
+import React from "react";
+import PropTypes from "prop-types";
+
+function User({ title, data, friends }) {
+  return (
+    <div>
+      <strong>{title}</strong>
+      <div>İsim: {data.name}</div>
+      <div>Yaş: {data.age}</div>
+      <div>Şehir: {data.city}</div>
+      <h3>Arkadaşları</h3>
+      {friends.map((friend, i) => (
+        <div key={i}>{friend}</div>
+      ))}
+      <hr />
+    </div>
+  );
+}
+
+User.propTypes = {
+  title: PropTypes.string,
+  data: PropTypes.exact({
+    name: PropTypes.string,
+    age: PropTypes.number,
+    city: PropTypes.string,
+  }),
+  friends: PropTypes.array,
+};
+
+User.defaultProps = {
+  title: "Kişi",
+};
+
+export default User;
+```
+### App.js
+```javascript
+import React from "react";
+import User from "./components/User";
+
+function App() {
+  return (
+    <div>
+      <User
+        title="Kişi"
+        data={{
+          name: "Alican KOÇMAN",
+          city: "Mersin",
+          age: 24,
+        }}
+        friends={["Ahmet", "Murat", "Ayşe", "Fatma"]}
+      />
+    </div>
+  );
+}
+
+export default App;
+
