@@ -27,3 +27,27 @@ function Counter() {
 }
 
 export default Counter
+
+```
+### State yapısı kullanılarak string gelen iki paremetrenin değerini butonlar aracılığı ile değiştiren kod bloğu aşağıda verilmektedir.
+
+
+```jsx
+import React, {useState} from 'react'
+
+function user() {
+    const [user,setUser]=useState({ name:'Mehmet',surname:"Seven" });
+  return (
+    <div>
+      <h2> User </h2>
+      {user.name} {user.surname}
+
+    <div>
+      <button onClick={()=> setUser({...user,name:"Alican"})}>Ismi degistir</button>
+      <button onClick={()=>setUser({...user,surname:"KOÇMAN"})}>Soyismi Degistir</button>
+    </div>
+    </div>
+  )
+}
+
+export default user
