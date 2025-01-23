@@ -1,8 +1,29 @@
-# React + Vite
+### State Kullanılarak Count Değerini arttırma
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Aşağıda 4 adet buton yer almaktadır.Her birine farklı bir artış miktarı verilmiştir.Count temelinde bir sayı barındırır.Artış değeri amountdan gelen miktara gelen değer alır yeni değer Count parametresine aktarılır.
 
-Currently, two official plugins are available:
+```jsx
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+import React, {useState} from "react";
+
+function Counter() {
+  const [count,setCount]=useState(0);
+  const [amount,setAmount]=useState(1);
+
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count+amount)}>Arttırır</button>
+    <hr/>
+    <div>
+      Arttirma
+    </div>
+    <button onClick={()=>setAmount(1)}>+1</button>
+    <button onClick={()=>setAmount(3)}>+3</button>
+    <button onClick={()=>setAmount(10)}>+10</button>
+    </div>
+  );
+}
+
+export default Counter
