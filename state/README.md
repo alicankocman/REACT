@@ -53,7 +53,7 @@ function user() {
 export default user
 
 ```
-### React Renkler Bileşeni
+# React Renkler Bileşeni
 # Bu proje, React kullanarak bir renk listesi oluşturmayı ve listeye dinamik olarak yeni renkler eklemeyi gösterir. State, şu nedenlerle kullanılmıştır:
 * Listeyi Dinamik Güncelleme: Renklerin saklanması ve yeni renklerin eklenmesi için.
 * Otomatik Yeniden Render: State değiştiğinde, React bileşeni otomatik olarak güncellenir ve yeni liste ekranda görünür.
