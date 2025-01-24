@@ -82,3 +82,60 @@ function Colors() {
 
 export default Colors;
 
+```
+# React'te `prev` Kullanımı Örnekleri
+
+### React'te state güncellemelerinde `prev` genellikle bir **callback fonksiyonu** içinde kullanılır. Bu yöntem, önceki state'e güvenli bir şekilde erişim sağlar ve React'in asenkron state güncellemeleriyle oluşabilecek hataları önler.
+
+### Aşağıda verilen örnekte prev'i mevcut `count` değerine erişmek için kullanıyoruz.React'te state güncellemeleri asenkron olduğundan, doğrudan `count + amount` yazmak hatalara neden olabilir.
+```jsx
+import React, {useState} from "react";
+
+function Counter() {
+  const [count,setCount]=useState(0);
+  const [amount,setAmount]=useState(1);
+
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount((prev)=>prev+amount)}>Arttırır</button>
+    <hr/>
+    <div>
+      Arttirma
+    </div>
+    <button onClick={()=>setAmount(1)}>+1</button>
+    <button onClick={()=>setAmount(3)}>+3</button>
+    <button onClick={()=>setAmount(10)}>+10</button>
+    </div>
+  );
+}
+
+export default Counter
+
+```
+Aşağıda yer alan `setColors` fonksiyonunda, mevcut `colors` dizisine erişmek için bir callback fonksiyonu kullanıyoruz.`prev`, önceki `colors` dizisinin bir kopyasını alır.
+```jsx
+import React, { useState } from 'react';
+
+function Colors() {
+  const [colors, setColors] = useState(["Sarı", "Lacivert", "Kırmızı"]);
+
+  const handleClick = () => {
+    setColors(prev =>([...prev, "Yesil"]));
+  };
+
+  return (
+    <div>
+      <h2>Renkler</h2>
+      {colors.map((color, i) => (
+        <div key={i}>{color}</div>
+      ))}
+
+      <button onClick={handleClick}>Renk Ekle</button>
+    </div>
+  );
+}
+
+export default Colors;
+
