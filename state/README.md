@@ -198,3 +198,66 @@ function Form() {
 }
 
 export default Form;
+
+```
+## Yukarıda verilen örneğin benzeri aşağıda verilmektedir.Aralarındaki fark;
+### İlk örnek, her bir alan için ayrı bir state tanımlar (name, surname, gender) ve ayrı onChange fonksiyonları kullanır. Küçük formlar için daha basittir.
+### İkinci örnek, tüm form verilerini tek bir nesne (Form) içinde saklar ve tek bir handleChange fonksiyonu ile yönetir. Daha düzenlidir, büyük formlar için uygundur.
+
+``` jsx
+
+import React, { useState } from 'react';
+
+function Form() {
+    const[Form,setForm]=useState({name: "",surname: "", gender: "0"});
+
+    const handleChange = (e) => {
+        setForm((prev) =>({
+            ...prev,[e.target.name]: e.target.value
+        }
+        
+        )
+        )
+    }
+
+  return (
+    <div>
+      <div>
+        <div>Name</div>
+        <input
+          name='name'
+          placeholder="Isim"
+          value={Form.name}
+          onChange={handleChange}
+        />
+        <input  
+        name='surname'
+          placeholder="Soyisim"
+          value={Form.surname}
+          onChange={handleChange}
+        />
+      </div>
+    <div>
+        <br/>
+        <div>Cinsiyet</div>
+    <select name='gender' value={Form.gender} onChange={handleChange}>
+        <option value="0">Erkek</option>
+        <option value="1">Kadın</option>
+    </select>
+    <hr/>
+    </div>
+    İsim:
+      <strong>
+        {Form.name} {Form.surname}
+      </strong>
+<div>
+      Cinsiyet: <strong> {Form.gender ==='0' ? 'Erkek' : 'Kadın'}</strong>
+     
+    </div>
+    </div>
+    
+  );
+}
+
+export default Form;
+
