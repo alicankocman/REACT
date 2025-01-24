@@ -51,3 +51,34 @@ function user() {
 }
 
 export default user
+
+```
+### React Renkler Bileşeni
+# Bu proje, React kullanarak bir renk listesi oluşturmayı ve listeye dinamik olarak yeni renkler eklemeyi gösterir. State, şu nedenlerle kullanılmıştır:
+* Listeyi Dinamik Güncelleme: Renklerin saklanması ve yeni renklerin eklenmesi için.
+* Otomatik Yeniden Render: State değiştiğinde, React bileşeni otomatik olarak güncellenir ve yeni liste ekranda görünür.
+
+```jsx
+import React, { useState } from 'react';
+
+function Colors() {
+  const [colors, setColors] = useState(["Sarı", "Lacivert", "Kırmızı"]);
+
+  const handleClick = () => {
+    setColors([...colors, "Yesil"]);
+  };
+
+  return (
+    <div>
+      <h2>Renkler</h2>
+      {colors.map((color, i) => (
+        <div key={i}>{color}</div>
+      ))}
+
+      <button onClick={handleClick}>Renk Ekle</button>
+    </div>
+  );
+}
+
+export default Colors;
+
