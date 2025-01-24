@@ -139,3 +139,62 @@ function Colors() {
 
 export default Colors;
 
+```
+## React Form Uygulaması
+### Bu projede, kullanıcının isim, soyisim ve cinsiyet bilgilerini girebileceği bir form oluşturulmuştur. Kullanıcının girdiği bilgiler, React'in useState hook'u ile yönetilmekte ve anlık olarak ekrana yansıtılmaktadır.
+
+* State kullanımı:
+name, surname ve gender state'leri form verilerini kontrol etmek ve dinamik bir kullanıcı deneyimi sağlamak için kullanılmıştır.
+ 
+* Dinamik güncelleme:
+Kullanıcı her veri girdiğinde veya seçim yaptığında, state güncellenir ve bilgiler ekranda gerçek zamanlı olarak gösterilir.
+
+Bu yapı, React'in bileşen tabanlı uygulamalarında nasıl kullanılacağını basit bir şekilde göstermektedir.
+
+``` jsx
+
+import React, { useState } from 'react';
+
+function Form() {
+  const [name, setName] = useState('Alican');
+  const [surname, setSurname] = useState('KOÇMAN');
+  const [gender,setGender] = useState ("0");
+
+  return (
+    <div>
+      <div>
+        <div>Name</div>
+        <input
+          placeholder="Isim"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        <input
+          placeholder="Soyisim"
+          value={surname}
+          onChange={(event) => setSurname(event.target.value)}
+        />
+      </div>
+    <div>
+        <br/>
+        <div>Cinsiyet</div>
+    <select value={gender} onChange={(event)=>setGender(event.target.value)}>
+        <option value="0">Erkek</option>
+        <option value="1">Kadın</option>
+    </select>
+    <hr/>
+    </div>
+    İsim:
+      <strong>
+        {name} {surname}
+      </strong>
+<div>
+      Cinsiyet: <strong> {gender ==='0' ? 'Erkek' : 'Kadın'}</strong>
+     
+    </div>
+    </div>
+    
+  );
+}
+
+export default Form;
