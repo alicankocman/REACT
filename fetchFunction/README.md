@@ -1,8 +1,40 @@
-# React + Vite
+# React Users Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Bu proje, React kullanılarak bir API'den kullanıcı verilerinin çekilmesini ve görüntülenmesini sağlayan basit bir uygulamadır. React Hooks (useState ve useEffect) kullanılarak geliştirilmiştir.
 
-Currently, two official plugins are available:
+### Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* API'den kullanıcı verilerini çekme
+* "Yükleniyor..." mesajı ile yükleme durumu gösterimi
+* Dinamik kullanıcı listesi görüntüleme
+
+### Kod Örneği
+
+```jsx
+import React, { useEffect, useState } from 'react';
+
+function Users() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <div>
+      <h2>Users</h2>
+      {loading && <div>Yükleniyor...</div>}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Users;
